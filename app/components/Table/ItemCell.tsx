@@ -37,22 +37,22 @@ export function ItemCell({
 	return (
 		<a
 			className={classNames(
-				"flex flex-row items-center justify-start gap-x-1 sm:gap-x-3 pr-4 h-full cursor-pointer select-all",
+				"flex flex-row items-center justify-start gap-x-1 sm:gap-x-3 pr-4 h-full cursor-pointer select-all w-full sm:w-auto grow",
 				nameColor
 			)}
 			href={items.link}
 		>
 			<img
-				className="w-8 h-8 rounded-full select-none"
+				className="w-8 h-8 rounded-full select-none hidden sm:block"
 				src={
 					items.icon ||
 					"https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFUxnaPLJz5H74y1xtTcz6etNumIx29U6Zd3j7yQoYih3lG1-UJqY27xJIeLMlhpaD9Aclo/62fx62f"
 				}
 			/>
-			<span className="grow lg:grow-0">{itemName}</span>
+			<span className="grow lg:grow-0 py-2 sm:py-0">{itemName}</span>
 
 			{wearIndex ? (
-				<span className="sm:px-2 md:px-3 px-1.5 rounded-sm text-gray-600 bg-gray-700/25">
+				<span className="sm:px-2 md:px-3 px-1.5 rounded-sm text-gray-600 bg-gray-700/25 hidden sm:inline-block">
 					{wearSpan}
 				</span>
 			) : null}

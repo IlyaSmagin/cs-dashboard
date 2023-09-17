@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	createColumnHelper,
 	flexRender,
@@ -15,6 +15,7 @@ import { SortIcon } from "../icons/SortIcon";
 import { ItemCell } from "./ItemCell";
 import { PriceCell } from "./PriceCell";
 import { SoldCount } from "./SoldCount";
+import { useMediaQuery } from "@/app/hooks/useMatchMedia";
 
 export type CS_ITEM = {
 	items: {
@@ -78,25 +79,38 @@ const columns = [
 export default function Table({ data }: { data: Array<CS_ITEM> }) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 
+	const [columnVisibility, setColumnVisibility] = useState({});
+	const isMediaMatched = useMediaQuery("(max-width: 720px)");
+
 	const table = useReactTable({
 		data,
 		columns,
 		state: {
 			sorting,
+			columnVisibility,
 		},
 		defaultColumn: {
 			size: 50,
 		},
 
+		onColumnVisibilityChange: setColumnVisibility,
 		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 	});
-
+	const changeVisibility = table.getColumn("sold_24h");
+	useEffect(() => {
+		if (isMediaMatched && changeVisibility?.getIsVisible()) {
+			changeVisibility?.toggleVisibility();
+		}
+		if (!isMediaMatched && !changeVisibility?.getIsVisible()) {
+			changeVisibility?.toggleVisibility();
+		}
+	}, [isMediaMatched]);
 	return (
 		<>
 			<div>
-				<table className=" text-gray-400 text-sm w-full table-fixed">
+				<table className=" text-gray-400 text-sm w-full table-fixed ">
 					<thead className=" text-gray-500 rounded-3xl">
 						{table.getHeaderGroups().map((headerGroup) => (
 							<tr key={headerGroup.id}>
@@ -133,7 +147,7 @@ export default function Table({ data }: { data: Array<CS_ITEM> }) {
 								className="border-b border-gray-800"
 							>
 								{row.getVisibleCells().map((cell) => (
-									<td key={cell.id} className="h-12">
+									<td key={cell.id} className="md:h-12">
 										{flexRender(
 											cell.column.columnDef.cell,
 											cell.getContext()

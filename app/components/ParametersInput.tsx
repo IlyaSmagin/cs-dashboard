@@ -18,7 +18,7 @@ export default function ParametersInput({
 	return (
 		<form
 			onSubmit={() => console.log("sub")}
-			className="flex w-full px-6 sm:px-0 max-w-screen-2xl justify-between gap-y-14 gap-x-8 lg:gap-x-0 pb-12 flex-wrap md:flex-nowrap"
+			className="flex w-full px-6 sm:px-0 max-w-screen-2xl justify-between gap-y-8 gap-x-8 lg:gap-x-0 pb-12 flex-wrap md:flex-nowrap"
 		>
 			<div className="h-10 relative w-full lg:w-1/2 ">
 				<label
