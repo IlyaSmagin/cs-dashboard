@@ -113,11 +113,14 @@ export default function Table({ data }: { data: Array<CS_ITEM> }) {
 				<table className=" text-gray-400 text-sm w-full table-fixed ">
 					<thead className=" text-gray-500 rounded-3xl">
 						{table.getHeaderGroups().map((headerGroup) => (
-							<tr key={headerGroup.id}>
+							<tr
+								className="flex flex-wrap sm:table-row justify-between TODO:FIX_ARIA"
+								key={headerGroup.id}
+							>
 								{headerGroup.headers.map((header) => (
 									<th
 										key={header.id}
-										className="py-3 text-gray-400 h-12 last:float-right xl:first:w-7/12 first:w-1/3 sm:first:w-5/12"
+										className="first:w-full py-3 text-gray-400 h-12 last:float-right xl:first:w-7/12 sm:first:w-5/12"
 										onClick={header.column.getToggleSortingHandler()}
 									>
 										<div className="flex flex-row items-center text-center cursor-pointer group">
@@ -144,10 +147,13 @@ export default function Table({ data }: { data: Array<CS_ITEM> }) {
 						{table.getRowModel().rows.map((row) => (
 							<tr
 								key={row.id}
-								className="border-b border-gray-800"
+								className="border-b border-gray-800 flex flex-wrap justify-between sm:table-row pb-3"
 							>
 								{row.getVisibleCells().map((cell) => (
-									<td key={cell.id} className="md:h-12">
+									<td
+										key={cell.id}
+										className="md:h-12 first:w-full"
+									>
 										{flexRender(
 											cell.column.columnDef.cell,
 											cell.getContext()

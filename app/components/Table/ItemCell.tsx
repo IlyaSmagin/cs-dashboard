@@ -49,7 +49,7 @@ export function ItemCell({
 					"https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFUxnaPLJz5H74y1xtTcz6etNumIx29U6Zd3j7yQoYih3lG1-UJqY27xJIeLMlhpaD9Aclo/62fx62f"
 				}
 			/>
-			<span className="grow lg:grow-0 py-2 sm:py-0">{itemName}</span>
+			<span className="grow lg:grow-0 py-1 sm:py-0">{itemName}</span>
 
 			{wearIndex ? (
 				<span className="sm:px-2 md:px-3 px-1.5 rounded-sm text-gray-600 bg-gray-700/25 hidden sm:inline-block">
