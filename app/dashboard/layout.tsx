@@ -14,7 +14,7 @@ export default function DashboardLayout({
 	return (
 		<>
 			<main className="flex h-full w-full flex-col items-center justify-start px-1 sm:px-2 md:px-4 lg:px-8">
-				<header className="container h-20 shrink-0 px-6 md:px-0 flex flex-row justify-between items-center">
+				<header className="container h-20 shrink-0 px-6 sm:px-0 flex flex-row justify-between items-center">
 					<Link
 						className={"text-2xl font-bold text-gray-200"}
 						href="/"
@@ -29,7 +29,7 @@ export default function DashboardLayout({
 						v0.0.1
 					</Link>
 				</header>
-				<div className="container h-fit ">
+				<div className="container h-fit px-6 sm:px-0">
 					{/*  max-w-screen-2xl */}
 					<h3 className="w-full py-8 text-3xl font-bold">
 						Choose parameters <br />

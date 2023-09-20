@@ -37,6 +37,12 @@ const columns = [
 	columnHelper.accessor("items", {
 		header: "Name",
 		cell: (info) => <ItemCell items={info.getValue()} />,
+		sortingFn: (rowA: any, rowB: any, columnId: any) => {
+			const nameA = rowA.getValue(columnId).name;
+			const nameB = rowB.getValue(columnId).name;
+
+			return nameA.localeCompare(nameB);
+		},
 	}),
 	columnHelper.accessor("buy_price", {
 		header: () => "Buy Price",
